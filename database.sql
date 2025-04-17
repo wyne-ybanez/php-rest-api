@@ -1,3 +1,4 @@
+-- use this on on your dbms
 CREATE DATABASE product_db;
 
 CREATE TABLE product (

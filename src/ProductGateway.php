@@ -11,6 +11,11 @@ class ProductGateway
 
     public function getAll(): array
     {
+        // create sql statement to query the db
+        // assign statment to a variable
+        // create an empty array for data storage
+        // statement fetches rows as an associative array
+
         $sql = "SELECT *
                 FROM product";
 
@@ -19,9 +24,7 @@ class ProductGateway
         $data = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
             $row["is_available"] = (bool) $row["is_available"];
-
             $data[] = $row;
         }
 

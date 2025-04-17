@@ -2,6 +2,8 @@
 
 class ProductController
 {
+    // adds ProductGateway class as a dependency
+    // ensures the value of this arguement will be assigned to a private property with the same name
     public function __construct(private ProductGateway $gateway) {}
 
     public function processRequest(string $method, ?string $id): void
@@ -64,6 +66,9 @@ class ProductController
 
     private function processCollectionRequest(string $method): void
     {
+        // get all records
+
+
         switch ($method) {
             case "GET":
                 echo json_encode($this->gateway->getAll());
