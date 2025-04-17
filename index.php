@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+// autoloads classes for use from `/src`
+// would normally use composer for autoloading in realworld business setting
 spl_autoload_register(function ($class) {
     require __DIR__ . "/src/$class.php";
 });
@@ -9,6 +11,7 @@ spl_autoload_register(function ($class) {
 set_error_handler("ErrorHandler::handleError");
 set_exception_handler("ErrorHandler::handleException");
 
+// ensures http responses are in expected json format
 header("Content-type: application/json; charset=UTF-8");
 
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
@@ -27,16 +30,3 @@ $gateway = new ProductGateway($database);
 $controller = new ProductController($gateway);
 
 $controller->processRequest($_SERVER["REQUEST_METHOD"], $id);
-
-
-
-
-
-
-
-
-
-
-
-
-
