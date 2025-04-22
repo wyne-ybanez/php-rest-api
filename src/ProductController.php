@@ -2,11 +2,9 @@
 
 class ProductController
 {
-    // constructor - adds ProductGateway as a dependency
-    // ensures the value of this arguement will be assigned to a private property with the same name
+    // Ensures the value of this arguement will be assigned to a private property with the same name
     public function __construct(private ProductGateway $gateway) {}
 
-    // Processes
     public function processRequest(string $method, ?string $id): void
     {
         if ($id) {
