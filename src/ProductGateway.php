@@ -36,6 +36,12 @@ class ProductGateway
 
     public function create(array $data): string
     {
+        // create sql statement
+        // prepare sql statment on the db connection property
+        // bind the values to the placeholders, define values types
+        // execute the statment
+        // return the ID of the record inserted
+
         $sql = "INSERT INTO product (name, size, is_available)
                 VALUES (:name, :size, :is_available)";
 

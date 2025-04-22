@@ -2,10 +2,11 @@
 
 class ProductController
 {
-    // adds ProductGateway class as a dependency
+    // constructor - adds ProductGateway as a dependency
     // ensures the value of this arguement will be assigned to a private property with the same name
     public function __construct(private ProductGateway $gateway) {}
 
+    // Processes
     public function processRequest(string $method, ?string $id): void
     {
         if ($id) {
@@ -66,8 +67,14 @@ class ProductController
 
     private function processCollectionRequest(string $method): void
     {
-        // GET all records
-        // POST new record
+        // GET -  encodes data into JSON format
+        // in HTTPie, data is encoded as strings by default so strict typing must be kept in mind when making a POST request e.g. size:=30
+
+        // POST - decodes input data into an associative array
+        // validate input data
+        // if data passes, create data -> call gateway create method on the data
+        // echo a response message
+
         switch ($method) {
             case "GET":
                 echo json_encode($this->gateway->getAll());
@@ -79,14 +86,14 @@ class ProductController
                 $errors = $this->getValidationErrors($data);
 
                 if (! empty($errors)) {
-                    http_response_code(422);
+                    http_response_code(422); // unprocessable entity
                     echo json_encode(["errors" => $errors]);
                     break;
                 }
 
                 $id = $this->gateway->create($data);
 
-                http_response_code(201);
+                http_response_code(201); // response for inserting a record
                 echo json_encode([
                     "message" => "Product created",
                     "id" => $id
@@ -94,13 +101,18 @@ class ProductController
                 break;
 
             default:
-                http_response_code(405);
-                header("Allow: GET, POST");
+                http_response_code(405); // method not allowed
+                header("Allow: GET, POST"); // specify whats allowed
         }
     }
 
     private function getValidationErrors(array $data, bool $is_new = true): array
     {
+        // initialize an empty array
+        // validate the name field
+        // validate the size field, check if integer
+        // return errors array
+
         $errors = [];
 
         if ($is_new && empty($data["name"])) {

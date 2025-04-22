@@ -1,2 +1,7 @@
 RewriteEngine On
-RewriteRule . index.php
+# Don't rewrite direct file access
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Rewrite everything else to index.php
+RewriteRule . index.php [L]
