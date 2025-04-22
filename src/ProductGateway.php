@@ -58,6 +58,14 @@ class ProductGateway
 
     public function get(string $id): array | false
     {
+        // create sql statement
+        // prepare sql statment on the db connection property
+        // bind the values of the ID arguement as an integer
+        // execute the statment
+        // fetch the record as an associative array
+        // check if product is available (as a boolean value)
+        // return array data or false if there is no data
+
         $sql = "SELECT *
                 FROM product
                 WHERE id = :id";
@@ -79,6 +87,15 @@ class ProductGateway
 
     public function update(array $current, array $new): int
     {
+        // compare current array data and new array data
+
+        // create update statement WHERE id = product's id
+        // prepare sql statment on the db connection property
+        // bind values to placeholders
+        // bind ID value that we get it from the current product values
+        // execute statement
+        // return number of rows affected
+
         $sql = "UPDATE product
                 SET name = :name, size = :size, is_available = :is_available
                 WHERE id = :id";
@@ -98,6 +115,12 @@ class ProductGateway
 
     public function delete(string $id): int
     {
+        // delete record from the table identified by ID
+        // prepare sql statment on the db connection property
+        // bind ID to ID placeholder
+        // execute statement
+        // return number of rows affected
+
         $sql = "DELETE FROM product
                 WHERE id = :id";
 

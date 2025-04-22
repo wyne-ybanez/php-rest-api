@@ -16,6 +16,19 @@ class ProductController
 
     private function processResourceRequest(string $method, string $id): void
     {
+        // fetch product via ID
+        // if product is not found - give 404 response & message
+
+        // GET - output the product data as json
+
+        // PATCH - update an existing record
+        // get data from request
+        // validate input data
+        // update existing record
+        // return the number of rows affected and ID of product changed
+
+        // DELETE - delete record from the table identified by ID
+
         $product = $this->gateway->get($id);
 
         if (! $product) {
@@ -58,8 +71,8 @@ class ProductController
                 break;
 
             default:
-                http_response_code(405);
-                header("Allow: GET, PATCH, DELETE");
+                http_response_code(405); // method not allowed
+                header("Allow: GET, PATCH, DELETE"); // specify allowed methods
         }
     }
 
@@ -107,7 +120,7 @@ class ProductController
     private function getValidationErrors(array $data, bool $is_new = true): array
     {
         // initialize an empty array
-        // validate the name field
+        // validate the name field, should only work if we're creating a new record
         // validate the size field, check if integer
         // return errors array
 
