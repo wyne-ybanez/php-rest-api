@@ -1,5 +1,8 @@
 <?php
 
+/*
+    Methods in this class serve as a gateway to the product table in the database.
+*/
 class ProductGateway
 {
     private PDO $conn;
@@ -14,7 +17,7 @@ class ProductGateway
         // create sql statement to query the db
         // assign statment to a variable
         // create an empty array for data storage
-        // statement fetches rows as an associative array
+        // return an array of rows (associative array)
 
         $sql = "SELECT *
                 FROM product";
@@ -24,7 +27,7 @@ class ProductGateway
         $data = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $row["is_available"] = (bool) $row["is_available"];
+            $row["is_available"] = (bool) $row["is_available"]; // boolean literal - 'true' or 'false' rather than 1 or 0
             $data[] = $row;
         }
 

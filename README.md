@@ -30,13 +30,25 @@ This is what my terminal looks like:
 ~/dev/php-rest-api
 ```
 
-Now I can do something like this:
+In the directory, assuming I have valet installed - I can then run the command:
 
 ```bash
- http php-rest-api.test/products
+valet link .
 ```
 
-It should then output this (as an example):
+Now I can make a GET request like this:
+
+```bash
+http php-rest-api.test/products
+```
+
+I can also make a POST request like this:
+
+```bash
+http post php-rest-api.test/products name="Test Product"
+```
+
+Example Output:
 
 ```bash
 HTTP/1.1 200 OK
@@ -67,6 +79,12 @@ X-Powered-By: PHP/8.2.28
         "is_available": true,
         "name": "product 3",
         "size": 30
+    },
+    {
+        "id": 4,
+        "is_available": false,
+        "name": "test post",
+        "size": 0
     }
 ]
 ```

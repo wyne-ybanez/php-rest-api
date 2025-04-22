@@ -66,9 +66,8 @@ class ProductController
 
     private function processCollectionRequest(string $method): void
     {
-        // get all records
-
-
+        // GET all records
+        // POST new record
         switch ($method) {
             case "GET":
                 echo json_encode($this->gateway->getAll());

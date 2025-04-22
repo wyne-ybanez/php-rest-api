@@ -8,6 +8,7 @@ spl_autoload_register(function ($class) {
     require __DIR__ . "/src/$class.php";
 });
 
+// exception handlers
 set_error_handler("ErrorHandler::handleError");
 set_exception_handler("ErrorHandler::handleException");
 
@@ -23,6 +24,7 @@ if ($parts[1] != "products") {
 
 $id = $parts[2] ?? null;
 
+// Initialize classes
 $database = new Database("localhost", "product_db", "root", "");
 
 $gateway = new ProductGateway($database);
