@@ -36,7 +36,11 @@ In the directory, assuming I have valet installed - I can then run the command:
 valet link .
 ```
 
+&nbsp;
+
 ---
+
+&nbsp;
 
 ### Make a GET request
 
@@ -44,7 +48,37 @@ valet link .
 http php-rest-api.test/products
 ```
 
+Example Output:
+
+```bash
+HTTP/1.1 200 OK
+...
+
+[
+    {
+        "id": 1,
+        "is_available": true,
+        "name": "product 1",
+        "size": 10
+    },
+    {
+        "id": 2,
+        "is_available": true,
+        "name": "product 2",
+        "size": 20
+    },
+    {
+        "id": 3,
+        "is_available": true,
+        "name": "product 3",
+        "size": 30
+    },
+]
+```
+
 ---
+
+&nbsp;
 
 ### Make a POST request
 
@@ -91,6 +125,8 @@ HTTP/1.1 200 OK
 ```
 
 ---
+
+&nbsp;
 
 ### Make a PATCH request
 
@@ -146,6 +182,8 @@ Run GET request again to see changes:
 ```
 
 ---
+
+&nbsp;
 
 ### Make a DELETE request
 
