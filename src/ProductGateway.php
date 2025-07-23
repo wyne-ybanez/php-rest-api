@@ -85,14 +85,14 @@ class ProductGateway
         return $data;
     }
 
-    public function update(array $current, array $new): int
+    public function update(array $product, array $new): int
     {
-        // compare current array data and new array data
+        // compare current array data with new array data
 
         // create update statement WHERE id = product's id
         // prepare sql statment on the db connection property
         // bind values to placeholders
-        // bind ID value that we get it from the current product values
+        // bind ID value that we get it from the current values
         // execute statement
         // return number of rows affected
 
@@ -102,11 +102,11 @@ class ProductGateway
 
         $stmt = $this->conn->prepare($sql);
 
-        $stmt->bindValue(":name", $new["name"] ?? $current["name"], PDO::PARAM_STR);
-        $stmt->bindValue(":size", $new["size"] ?? $current["size"], PDO::PARAM_INT);
-        $stmt->bindValue(":is_available", $new["is_available"] ?? $current["is_available"], PDO::PARAM_BOOL);
+        $stmt->bindValue(":name", $new["name"] ?? $product["name"], PDO::PARAM_STR);
+        $stmt->bindValue(":size", $new["size"] ?? $product["size"], PDO::PARAM_INT);
+        $stmt->bindValue(":is_available", $new["is_available"] ?? $product["is_available"], PDO::PARAM_BOOL);
 
-        $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);
+        $stmt->bindValue(":id", $product["id"], PDO::PARAM_INT);
 
         $stmt->execute();
 

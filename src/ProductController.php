@@ -31,7 +31,7 @@ class ProductController
 
         $product = $this->gateway->get($id);
 
-        if (! $product) {
+        if (!$product) {
             http_response_code(404);
             echo json_encode(["message" => "Product not found"]);
             return;
@@ -47,7 +47,7 @@ class ProductController
 
                 $errors = $this->getValidationErrors($data, false);
 
-                if (! empty($errors)) {
+                if (!empty($errors)) {
                     http_response_code(422);
                     echo json_encode(["errors" => $errors]);
                     break;
@@ -96,7 +96,7 @@ class ProductController
 
                 $errors = $this->getValidationErrors($data);
 
-                if (! empty($errors)) {
+                if (!empty($errors)) {
                     http_response_code(422); // unprocessable entity
                     echo json_encode(["errors" => $errors]);
                     break;
@@ -127,12 +127,12 @@ class ProductController
         $errors = [];
 
         if ($is_new && empty($data["name"])) {
-            $errors[] = "name is required";
+            $errors[] = "Name is required";
         }
 
         if (array_key_exists("size", $data)) {
             if (filter_var($data["size"], FILTER_VALIDATE_INT) === false) {
-                $errors[] = "size must be an integer";
+                $errors[] = "Size must be an integer";
             }
         }
 

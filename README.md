@@ -36,13 +36,21 @@ In the directory, assuming I have valet installed - I can then run the command:
 valet link .
 ```
 
-Now I can make a GET request like this:
+---
+
+### Make a GET request
 
 ```bash
 http php-rest-api.test/products
 ```
 
-I can also make a POST request like this:
+---
+
+### Make a POST request
+
+- name (string)
+- size (int)
+- is_available (boolean)
 
 ```bash
 http post php-rest-api.test/products name="Test Product"
@@ -52,14 +60,7 @@ Example Output:
 
 ```bash
 HTTP/1.1 200 OK
-Connection: keep-alive
-Content-Encoding: gzip
-Content-Type: application/json; charset=UTF-8
-Date: Thu, 17 Apr 2025 15:05:31 GMT
-Server: nginx/1.27.1
-Transfer-Encoding: chunked
-Vary: Accept-Encoding
-X-Powered-By: PHP/8.2.28
+...
 
 [
     {
@@ -83,8 +84,83 @@ X-Powered-By: PHP/8.2.28
     {
         "id": 4,
         "is_available": false,
-        "name": "test post",
+        "name": "Test Product",
         "size": 0
     }
 ]
+```
+
+---
+
+### Make a PATCH request
+
+- name (string)
+- size (int)
+- is_available (boolean)
+
+```bash
+http patch php-rest-api.test/products/4 name="New Product 4"
+```
+
+Example Output:
+
+```bash
+HTTP/1.1 200 OK
+...
+
+{
+    "message": "Product 4 updated",
+    "rows": 1
+}
+```
+
+Run GET request again to see changes:
+
+```bash
+[
+    {
+        "id": 1,
+        "is_available": true,
+        "name": "product 1",
+        "size": 10
+    },
+    {
+        "id": 2,
+        "is_available": true,
+        "name": "product 2",
+        "size": 20
+    },
+    {
+        "id": 3,
+        "is_available": true,
+        "name": "product 3",
+        "size": 30
+    },
+    {
+        "id": 4,
+        "is_available": false,
+        "name": "New Product 4",
+        "size": 0
+    },
+]
+```
+
+---
+
+### Make a DELETE request
+
+```bash
+http delete php-rest-api.test/products/4
+```
+
+Example Output:
+
+```bash
+HTTP/1.1 200 OK
+...
+
+{
+    "message": "Product 4 deleted",
+    "rows": 1
+}
 ```
