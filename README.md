@@ -18,6 +18,8 @@ You will need to run the database commands in `database.sql` in this project wit
 
 Feel free to customize the sample sql file further.
 
+&nbsp;
+
 ## Example
 
 Assuming I'm in the `/Sites` or `/Dev` directory. I have established my valet link. I have added my sample DB. I have added sample product rows.
@@ -76,6 +78,8 @@ HTTP/1.1 200 OK
 ]
 ```
 
+&nbsp;
+
 ---
 
 &nbsp;
@@ -123,6 +127,8 @@ HTTP/1.1 200 OK
     }
 ]
 ```
+
+&nbsp;
 
 ---
 
@@ -180,6 +186,8 @@ Run GET request again to see changes:
     },
 ]
 ```
+
+&nbsp;
 
 ---
 
