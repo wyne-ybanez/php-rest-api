@@ -8,6 +8,8 @@
 - Data validation
 - JSON decoding and encoding
 
+&nbsp;
+
 ## Setup
 
 - [Laravel Valet](https://laravel.com/docs/11.x/valet)
